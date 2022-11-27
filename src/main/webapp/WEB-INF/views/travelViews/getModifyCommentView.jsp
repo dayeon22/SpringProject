@@ -52,16 +52,30 @@
 
 <table border="1">
 	<c:forEach items="${cList}" var="comment">
-		<tr height="20">
-			<td width="100">${comment.writer}</td>
-			<td width="300">
-				<input type="button" value="수정하기" onclick="location.href='modifyComment.do?seq=${travel.seq}&commentSeq=${comment.commentSeq}'" />
-				<input type="button" value="삭제하기" onclick="location.href='deleteComment.do?seq=${travel.seq}&commentSeq=${comment.commentSeq}'" />
-			</td>
-		</tr>
-		<tr height="40">
-			<td colspan="2" width="400">${comment.content}</td>
-		</tr>
+		<c:set var="seq1" value="${comment.seq}" /> <!-- !!!여기 안됨!!! -->
+		<c:set var="seq2" value="${cdo.seq}" />
+			
+		<c:if test="${seq1 eq seq2}">
+			<tr height="20">
+				<td width="100">${comment.writer}</td>
+				<td width="300">
+					<input type="submit" value="수정하기">
+				</td>
+			</tr>
+			<tr height="40">
+				<td colspan="2" width="400"><input type="text" value="${comment.content}" name="content" /></td>
+			</tr>
+		</c:if>
+		
+		<c:if test="${seq1 ne seq2}">
+			<tr height="20">
+				<td width="100">${comment.writer}</td>
+				<td width="300"></td>
+			</tr>
+			<tr height="40">
+				<td colspan="2" width="400">${comment.content}</td>
+			</tr>
+		</c:if>
 	</c:forEach>
 </table>
 

@@ -5,14 +5,9 @@ public class TravelDo {
 	private String title;
 	private String writer;
 	private String content;
+	private String regdate;
+	private int hit;
 	
-	@Override
-	public String toString() {
-		return "BoardDo [seq=" + seq + 
-				", title=" + title + 
-				", writer=" + writer + 
-				", content=" + content + "]";
-	}
 	
 	public int getSeq() {
 		return seq;
@@ -37,6 +32,18 @@ public class TravelDo {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 
 }

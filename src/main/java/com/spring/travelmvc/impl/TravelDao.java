@@ -16,29 +16,29 @@ public class TravelDao {
 	JdbcTemplate jdbcTemplate;
 	
 	public void insertTravel(TravelDo tdo) {
-		String sql = "insert into travel (title, writer, content) values(?, ?, ?)";
+		String sql = "INSERT INTO travel (title, writer, content) VALUES(?, ?, ?)";
 		jdbcTemplate.update(sql, tdo.getTitle(), tdo.getWriter(), tdo.getContent());
 	}
 	
 	public TravelDo getTravel(TravelDo tdo) {
-		String sql = "select * from travel where seq=?";
+		String sql = "SELECt * FROM travel WHERE seq=?";
 		Object []args = {tdo.getSeq()};
 		return jdbcTemplate.queryForObject(sql, args, new TravelRowMapper());
 	}
 	
 	public ArrayList<TravelDo> getTravelList(){
-		String sql = "select * from travel";		
+		String sql = "SELECT * FROM travel";		
 		Object[] args = {};
 		return (ArrayList<TravelDo>) jdbcTemplate.query(sql, args, new TravelRowMapper());
 	}
 	
 	public void updateTravel(TravelDo tdo) {
-		String sql = "update travel set title=?, content=? where seq=?";
+		String sql = "UPDATE travel SET title=?, content=? WHERE seq=?";
 		jdbcTemplate.update(sql, tdo.getTitle(), tdo.getContent(), tdo.getSeq());
 	}
 	
 	public void deleteTravel(TravelDo tdo) {
-		String sql = "delete from travel where seq=?";
+		String sql = "DELETE FROM travel WHERE seq=?";
 		jdbcTemplate.update(sql, tdo.getSeq());
 	}
 	
@@ -46,10 +46,10 @@ public class TravelDao {
 		String sql = "";
 		
 		if (searchCon.equals("title")) {
-			sql = "select * from travel where title=? order by seq desc;";
+			sql = "SELECT * FROM travel WHERE title=? ORDER BY seq DESC;";
 		}
 		else if (searchCon.equals("content")) {
-			sql = "select * from travel where content=? order by seq desc;";
+			sql = "SELECT * FROM travel WHERE content=? ORDER BY seq DESC;";
 		}
 		Object[] args = {searchKey};
 		return (ArrayList<TravelDo>)jdbcTemplate.query(sql, args, new TravelRowMapper());

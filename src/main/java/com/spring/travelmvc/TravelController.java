@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.travelmvc.impl.CommentDao;
+import com.spring.travelmvc.impl.CommentDo;
 import com.spring.travelmvc.impl.TravelDao;
 import com.spring.travelmvc.impl.TravelDo;
 
@@ -16,6 +18,8 @@ public class TravelController {
 	
 	@Autowired
 	TravelDao travelDao;
+	@Autowired
+	CommentDao commentDao;
 	
 	@RequestMapping(value="/insertTravel.do")
 	public String insertTravel() {
@@ -24,9 +28,6 @@ public class TravelController {
 	
 	@RequestMapping(value="/insertProcTravel.do")
 	public String insertProcTravel(TravelDo tdo) {
-		System.out.println("title: " + tdo.getTitle());
-		System.out.println("writer: " + tdo.getWriter());
-		System.out.println("content: " + tdo.getContent());
 		travelDao.insertTravel(tdo);
 		
 		return "redirect:getTravelList.do";
@@ -35,7 +36,9 @@ public class TravelController {
 	@RequestMapping(value="/getTravel.do")
 	public String getTravel(TravelDo tdo, Model model) {
 		TravelDo travel = travelDao.getTravel(tdo);
+		ArrayList<CommentDo> cList = commentDao.getCommentList(tdo);
 		model.addAttribute("travel", travel);
+		model.addAttribute("cList", cList);
 		
 		return "getTravelView";
 	}
@@ -59,7 +62,6 @@ public class TravelController {
 	@RequestMapping(value="/modifyProcTravel.do")
 	public String modifyProcTravel(TravelDo tdo, Model model) {
 		travelDao.updateTravel(tdo);
-		model.addAttribute(tdo);
 		
 		return "redirect:getTravelList.do";
 	}
