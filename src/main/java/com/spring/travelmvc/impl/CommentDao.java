@@ -29,6 +29,7 @@ public class CommentDao {
 	public void updateComment(CommentDo cdo) {
 		String sql = "UPDATE comment SET content=? WHERE comment_seq=?";
 		jdbcTemplate.update(sql, cdo.getContent(), cdo.getCommentSeq());
+		System.out.println("UPDATE FINISHED!!!");
 	}
 	
 	public void deleteComment(CommentDo cdo) {

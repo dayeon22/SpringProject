@@ -55,10 +55,19 @@ public class CommentController {
 		return "getModifyCommentView";
 	}
 	
-//	@RequestMapping(value="/modifyCommentProc.do")
-//	public String modifyProcComment(TravelDo tdo, CommentDo cdo, Model model) {
-//		
-//	}
+	@RequestMapping(value="/modifyProcComment.do")
+	public String modifyProcComment(TravelDo tdo, CommentDo cdo, Model model) {
+		commentDao.updateComment(cdo);
+		
+		System.out.println(tdo.getSeq());
+		
+		TravelDo travel = travelDao.getTravel(tdo);
+		ArrayList<CommentDo> cList = commentDao.getCommentList(tdo);
+		model.addAttribute("travel", travel);
+		model.addAttribute("cList", cList);
+		
+		return "getTravelView";
+	}
 	
 	
 }

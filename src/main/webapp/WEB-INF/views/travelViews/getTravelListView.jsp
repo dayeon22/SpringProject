@@ -11,6 +11,7 @@
 <center>
 	<h2>게시판 전체 내용</h2>
 	<a href="insertTravel.do">새로운 글 추가</a>
+	<a href="loginView.jsp">로그인</a>
 	<form method="post" action="searchTravelList.do">
 		<table border="1">
 			<tr height="40" bgcolor="yellow">

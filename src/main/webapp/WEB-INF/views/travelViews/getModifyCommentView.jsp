@@ -50,34 +50,36 @@
 </table>
 </form>
 
-<table border="1">
-	<c:forEach items="${cList}" var="comment">
-		<c:set var="seq1" value="${comment.seq}" /> <!-- !!!여기 안됨!!! -->
-		<c:set var="seq2" value="${cdo.seq}" />
+<form action="modifyProcComment.do?commentSeq=${cdo.commentSeq}&seq=${travel.seq}" method="post">
+	<table border="1">
+		<c:forEach items="${cList}" var="comment">
+			<c:set var="seq1" value="${comment.commentSeq}" />
+			<c:set var="seq2" value="${cdo.commentSeq}" />
+				
+			<c:if test="${seq1 eq seq2}">
+				<tr height="20">
+					<td width="100">${comment.writer}</td>
+					<td width="300">
+						<input type="submit" value="수정하기">
+					</td>
+				</tr>
+				<tr height="40">
+					<td colspan="2" width="400"><input type="text" value="${comment.content}" name="content" /></td>
+				</tr>
+			</c:if>
 			
-		<c:if test="${seq1 eq seq2}">
-			<tr height="20">
-				<td width="100">${comment.writer}</td>
-				<td width="300">
-					<input type="submit" value="수정하기">
-				</td>
-			</tr>
-			<tr height="40">
-				<td colspan="2" width="400"><input type="text" value="${comment.content}" name="content" /></td>
-			</tr>
-		</c:if>
-		
-		<c:if test="${seq1 ne seq2}">
-			<tr height="20">
-				<td width="100">${comment.writer}</td>
-				<td width="300"></td>
-			</tr>
-			<tr height="40">
-				<td colspan="2" width="400">${comment.content}</td>
-			</tr>
-		</c:if>
-	</c:forEach>
-</table>
+			<c:if test="${seq1 ne seq2}">
+				<tr height="20">
+					<td width="100">${comment.writer}</td>
+					<td width="300"></td>
+				</tr>
+				<tr height="40">
+					<td colspan="2" width="400">${comment.content}</td>
+				</tr>
+			</c:if>
+		</c:forEach>
+	</table>
+</form>
 
 </center>
 </body>
