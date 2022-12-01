@@ -14,8 +14,10 @@
 		let name = document.getElementById('input_name').value;
 		let age = document.getElementById('input_age').value;
 		
-		if(id == "" || pw == "" || pwc == "" || name == "" || age == ""){
+		if(id == '' || pw == '' || pwc == '' || name == '' || age == ''){
 			alert('모든 항목을 입력해 주세요.');
+		} else if (pw != pwc) {
+			alert('비밀번호를 확인해 주세요.')
 		}
 		else{
 			document.join.submit();

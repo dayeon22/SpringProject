@@ -45,9 +45,7 @@ public class MemberController {
 	public String join(MemberDo mdo, String passwordConfirm, HttpServletResponse response) throws IOException {
 		ArrayList<MemberDo> dbList = memberDao.getMemberById(mdo.getId());
 		if (!dbList.isEmpty()) {
-			ScriptUtil.alertAndBackPage(response,  "이미 존재하는 회원입니다.");
-		} else if (!mdo.getPassword().contentEquals(passwordConfirm)) {
-			ScriptUtil.alertAndBackPage(response,  "비밀번호를 확인해 주세요."); // 이걸 getJoinView.jsp에서 하는게 좋을
+			ScriptUtil.alertAndBackPage(response, "이미 존재하는 회원입니다.");
 		} else {
 			memberDao.insertMember(mdo);
 		}
