@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,12 @@
 </head>
 <body>
 <center>
+<c:if test="${empty sessionId}">
+	<script>
+		alert("로그인 후 이용 가능합니다.");
+		history.go(-1);
+	</script>
+</c:if>
 <h2>새로운 글 등록</h2>
 <form action="insertProcTravel.do" method="post">
 	<table border="1">
@@ -22,7 +29,7 @@
 		<tr height="50" align="center">
 			<td width="150">글작성자</td>
 			<td width="250">
-				<input type="text" name="writer">
+				<input type="text" name="writer" value="${sessionId}" readonly>
 			</td>
 		</tr>
 		<tr height="50" align="center">

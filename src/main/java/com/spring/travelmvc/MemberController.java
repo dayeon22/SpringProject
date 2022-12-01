@@ -30,8 +30,9 @@ public class MemberController {
 		ArrayList<MemberDo> dbList = memberDao.getMemberById(id);
 		if (dbList.isEmpty() || !dbList.get(0).getPassword().equals(password)) {
 			ScriptUtil.alertAndBackPage(response, "아이디나 비밀번호가 잘못되었습니다.");
+		} else {
+			session.setAttribute("sessionId", id);
 		}
-		session.setAttribute("id", id);
 		return "redirect:getTravelList.do";
 	}
 	
@@ -46,10 +47,16 @@ public class MemberController {
 		if (!dbList.isEmpty()) {
 			ScriptUtil.alertAndBackPage(response,  "이미 존재하는 회원입니다.");
 		} else if (!mdo.getPassword().contentEquals(passwordConfirm)) {
-			ScriptUtil.alertAndBackPage(response,  "비밀번호를 확인해 주세요.");
+			ScriptUtil.alertAndBackPage(response,  "비밀번호를 확인해 주세요."); // 이걸 getJoinView.jsp에서 하는게 좋을
 		} else {
 			memberDao.insertMember(mdo);
 		}
+		return "redirect:getTravelList.do";
+	}
+	
+	@RequestMapping(value="/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "redirect:getTravelList.do";
 	}
 }

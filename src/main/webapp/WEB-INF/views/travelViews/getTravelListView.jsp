@@ -11,8 +11,15 @@
 <center>
 	<h2>게시판 전체 내용</h2>
 	<a href="insertTravel.do">새로운 글 추가</a>
-	<a href="getLogin.do">로그인</a>
-	<a href="getJoin.do">회원가입</a>
+	<c:choose>
+		<c:when test="${empty sessionId}">
+			<a href="getLogin.do">로그인</a>
+			<a href="getJoin.do">회원가입</a>
+		</c:when>
+		<c:otherwise>
+			<a href="logout.do">로그아웃</a>
+		</c:otherwise>
+	</c:choose>
 	<form method="post" action="searchTravelList.do">
 		<table border="1">
 			<tr height="40" bgcolor="yellow">

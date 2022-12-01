@@ -11,7 +11,6 @@
 		<div>
 			아이디: <input type="text" name="id" /><br />
 			비밀번호: <input type="password" name="password" /><br />
-			<!-- 아이디 기억하기 <input type="checkbox" name="rememberMe" /><br /> -->	
 		<input type="submit" value="로그인" /></div>
 	</form>
 </body>
