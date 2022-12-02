@@ -34,23 +34,23 @@
 			</tr>
 		
 			<tr height="40">
-				<td width="150" align="center">번호</td>
-				<td width="150" align="center">제목</td>
-				<td width="150" align="center">글쓴이</td>
-				<td width="150" align="center">내용</td>
+				<td width="50" align="center">번호</td>
+				<td width="400" align="center">제목</td>
+				<td width="100" align="center">글쓴이</td>
+				<td width="150" align="center">작성일</td>
 			</tr>
 			<c:forEach items="${tList}" var="travel">
 				<tr height="40">
-					<td width="150" align="center">${travel.seq}</td>
-					<td width="150" align="center"> 
+					<td width="50" align="center">${travel.seq}</td>
+					<td width="400" align="center"> 
 						<a href="getTravel.do?seq=${travel.seq}">${travel.title}</a>
 					</td>
-					<td width="150" align="center"> ${travel.writer} </td>
-					<td width="150" align="center"> ${travel.content} </td>
+					<td width="100" align="center"> ${travel.writer} </td>
+					<td width="150" align="center"> ${travel.regdate} </td>
 				</tr>
 			</c:forEach>
 		</table>
 	</form>
-</body>
 </center>
+</body>
 </html>

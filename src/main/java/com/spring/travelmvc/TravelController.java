@@ -33,10 +33,6 @@ public class TravelController {
 	
 	@RequestMapping(value="/insertProcTravel.do")
 	public String insertProcTravel(TravelDo tdo) {
-		
-		System.out.println(tdo.getTitle());
-		System.out.println(tdo.getWriter());
-		System.out.println(tdo.getContent());
 		travelDao.insertTravel(tdo);
 		
 		return "redirect:getTravelList.do";

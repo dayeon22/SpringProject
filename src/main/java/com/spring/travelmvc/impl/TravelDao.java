@@ -67,6 +67,7 @@ class TravelRowMapper implements RowMapper<TravelDo> {
 		tdo.setTitle(rs.getString(2));
 		tdo.setWriter(rs.getString(3));
 		tdo.setContent(rs.getString(4));
+		tdo.setRegdate(rs.getString(5));
 		
 		return tdo;
 	}
