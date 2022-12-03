@@ -33,9 +33,9 @@
 			</td>
 		</tr>
 		<tr height="50" align="center">
-			<td width="150">글내용</td>
-			<td width="250">
-				<input type="text" name="content">
+			<td colspan="2" width="250">
+				<!-- <input type="text" name="content"> -->
+				<textarea rows="15" cols="30" name="content">글 내용을 적어주세요.</textarea>
 			</td>
 		</tr>
 		<tr height="50" align="center">

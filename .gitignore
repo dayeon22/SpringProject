@@ -1,3 +1,4 @@
 pom.xml
-src/main/resources
+src/main/webapp/resources
 src/main/webapp/WEB-INF/lib
+src/main/webapp/uploads
