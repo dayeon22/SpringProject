@@ -43,6 +43,14 @@ public class MemberController {
 	
 	@RequestMapping(value="/join.do")
 	public String join(MemberDo mdo, String passwordConfirm, HttpServletResponse response) throws IOException {
+		
+		System.out.println(mdo.getId());
+		System.out.println(mdo.getPassword());
+		System.out.println(passwordConfirm);
+		System.out.println(mdo.getName());
+		System.out.println(mdo.getAge());
+		System.out.println(mdo.getGender());
+		
 		ArrayList<MemberDo> dbList = memberDao.getMemberById(mdo.getId());
 		if (!dbList.isEmpty()) {
 			ScriptUtil.alertAndBackPage(response, "이미 존재하는 회원입니다.");

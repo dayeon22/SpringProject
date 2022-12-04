@@ -107,5 +107,4 @@ public class CommentController {
 		return "getTravelView";
 	}
 	
-	// TODO: 작성자만 댓글 삭제할 수 있도록, 작성자만 게시글 수정/삭제할 수 있도록
 }
