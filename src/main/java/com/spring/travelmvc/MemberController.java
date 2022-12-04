@@ -65,4 +65,11 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:getTravelList.do";
 	}
+	
+	@RequestMapping(value="/unregister.do")
+	public String unregister(HttpSession session) {
+		memberDao.deleteMember((String)session.getAttribute("sessionId"));
+		session.invalidate();
+		return "redirect:getTravelList.do";
+	}
 }

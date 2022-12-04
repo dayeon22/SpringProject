@@ -20,12 +20,19 @@
 	</tr>
 	<tr height="50" align="center">
 		<td width="150">글제목</td>
-		<td colspan=4 width="250">${travel.title}</td>
+		<td colspan=3 width="250">${travel.title}</td>
 	</tr>
 	<tr height="50" align="center">
-		<td width="100">글작성자</td>
-		<td width="250">${travel.writer}</td>
-		<td width="100">작성일</td>
+		<td width="150">글작성자</td>
+		<c:choose>
+			<c:when test="${empty travel.writer}">
+				<td width="250">(탈퇴함)</td>
+			</c:when>
+			<c:otherwise>
+				<td width="250">${travel.writer}</td>
+			</c:otherwise>
+		</c:choose>
+		<td width="150">작성일</td>
 		<td width="250">${travel.regdate}</td>
 	</tr>
 	<tr height="50" align="center">
@@ -54,10 +61,17 @@
 </table>
 </form>
 
-<table class="table table-bordered">
+<table class="table table-striped">
 	<c:forEach items="${cList}" var="comment">
 		<tr height="20">
-			<td width="200">${comment.writer}</td>
+			<c:choose>
+				<c:when test="${empty comment.writer}">
+					<td width="200">(탈퇴함)</td>
+				</c:when>
+				<c:otherwise>
+					<td width="200">${comment.writer}</td>
+				</c:otherwise>
+			</c:choose>
 			<td width="100">${comment.regdate}</td>
 			<td width="100">
 				<input type="button" value="수정하기" onclick="location.href='modifyComment.do?seq=${travel.seq}&commentSeq=${comment.commentSeq}'" />

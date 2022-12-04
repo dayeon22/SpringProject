@@ -26,9 +26,9 @@ public class MemberDao {
 		return (ArrayList<MemberDo>)jdbcTemplate.query(sql, args, new MemberRowMapper());
 	}
 	
-	public void deleteMember(MemberDo mdo) {
+	public void deleteMember(String id) {
 		String sql = "DELETE FROM member WHERE id=?";
-		jdbcTemplate.update(sql, mdo.getId());
+		jdbcTemplate.update(sql, id);
 	}
 }
 

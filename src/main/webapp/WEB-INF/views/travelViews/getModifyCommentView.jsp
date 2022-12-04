@@ -23,7 +23,14 @@
 	</tr>
 	<tr height="50" align="center">
 		<td width="100">글작성자</td>
-		<td width="250">${travel.writer}</td>
+		<c:choose>
+			<c:when test="${empty travel.writer}">
+				<td width="250">(탈퇴함)</td>
+			</c:when>
+			<c:otherwise>
+				<td width="250">${travel.writer}</td>
+			</c:otherwise>
+		</c:choose>
 		<td width="100">작성일</td>
 		<td width="250">${travel.regdate}</td>
 	</tr>
@@ -52,7 +59,7 @@
 </form>
 
 <form action="modifyProcComment.do?commentSeq=${cdo.commentSeq}&seq=${travel.seq}" method="post">
-	<table class="table table-bordered">
+	<table class="table table-striped">
 		<c:forEach items="${cList}" var="comment">
 			<c:set var="seq1" value="${comment.commentSeq}" />
 			<c:set var="seq2" value="${cdo.commentSeq}" />
@@ -72,7 +79,14 @@
 			
 			<c:if test="${seq1 ne seq2}">
 				<tr height="20">
-					<td width="200">${comment.writer}</td>
+					<c:choose>
+						<c:when test="${empty comment.writer}">
+							<td width="200">(탈퇴함)</td>
+						</c:when>
+						<c:otherwise>
+							<td width="200">${comment.writer}</td>
+						</c:otherwise>
+					</c:choose>
 					<td width="100">${comment.regdate}</td>
 					<td width="100"></td>
 				</tr>

@@ -65,7 +65,7 @@ public class TravelController {
 		if (sessionId == null) {
 			ScriptUtil.alertAndBackPage(response,  "로그인 후 이용해 주세요.");
 		} else if (!sessionId.equals(dbTdo.getWriter())) {
-			ScriptUtil.alertAndBackPage(response,  "타인의 글은 삭제할 수 없습니다.");
+			ScriptUtil.alertAndBackPage(response,  "타인의 글은 수정할 수 없습니다.");
 		}
 		
 		return "getModifyView";

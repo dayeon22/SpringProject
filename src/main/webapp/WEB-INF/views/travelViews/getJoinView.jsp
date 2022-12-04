@@ -17,6 +17,8 @@
 			alert('모든 항목을 입력해 주세요.');
 		} else if (pw != pwc) {
 			alert('비밀번호를 확인해 주세요.');
+		} else if (isNaN(age)) {
+			alert('나이는 숫자로 입력해 주세요.');
 		} else{
 			document.getElementById('join').submit();
 		}

@@ -18,11 +18,12 @@
 	<div class="d-flex justify-content-end">
 		<c:choose>
 		<c:when test="${empty sessionId}">
-			<a class="text-right" href="getLogin.do">로그인</a>&nbsp;&nbsp;
-			<a class="text-right" href="getJoin.do">회원가입</a>
+			<a href="getLogin.do">로그인</a>&nbsp;&nbsp;
+			<a href="getJoin.do">회원가입</a>
 		</c:when>
 		<c:otherwise>
-			<a href="logout.do">로그아웃</a>
+			<a href="logout.do">로그아웃</a>&nbsp;&nbsp;
+			<a href="unregister.do">회원탈퇴</a>
 		</c:otherwise>
 		</c:choose>
 	</div>
@@ -73,7 +74,14 @@
 					<td align="center" colspan="2"> 
 						<a href="getTravel.do?seq=${travel.seq}">${travel.title}</a>
 					</td>
-					<td align="center"> ${travel.writer} </td>
+					<c:choose>
+					<c:when test="${empty travel.writer}">
+						<td align="center">(탈퇴함)</td>
+					</c:when>
+					<c:otherwise>
+						<td align="center"> ${travel.writer} </td>
+					</c:otherwise>
+					</c:choose>
 					<td align="center"> ${travel.regdate} </td>
 				</tr>
 			</c:forEach>
