@@ -48,9 +48,13 @@ public class TravelDao {
 		Object[] args = {};
 		
 		if (!searchKey.isEmpty()) {
-			sql += "WHERE " + searchCon + "=? ";
-			args = new Object[1];
-			args[0] = searchKey;
+			if (searchKey.charAt(0) == '"' && searchKey.endsWith("\"")) {
+				sql += " WHERE " + searchCon + "=? ";
+				args = new Object[1];
+				args[0] = searchKey.substring(1, searchKey.length() - 1);
+			} else {
+				sql += " WHERE " + searchCon + " LIKE '%" + searchKey + "%'";
+			}
 		}
 		sql += "ORDER BY " + orderValue + " " + order;
 		System.out.println(sql);
