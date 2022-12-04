@@ -95,11 +95,13 @@ public class TravelController {
 	
 	@RequestMapping(value="/searchTravelList.do")
 	public String searchTravelList(
+			@RequestParam(value="orderValue") String orderValue,
+			@RequestParam(value="order") String order,
 			@RequestParam(value="searchCon") String searchCon,
 			@RequestParam(value="searchKey") String searchKey,
 			Model model) {
 
-		ArrayList<TravelDo> tList = travelDao.searchTravelList(searchCon, searchKey);
+		ArrayList<TravelDo> tList = travelDao.searchTravelList(orderValue, order, searchCon, searchKey);
 		model.addAttribute("tList", tList);
 		
 		return "getTravelListView";

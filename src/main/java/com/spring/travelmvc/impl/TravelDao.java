@@ -42,16 +42,19 @@ public class TravelDao {
 		jdbcTemplate.update(sql, tdo.getSeq());
 	}
 	
-	public ArrayList<TravelDo> searchTravelList(String searchCon, String searchKey) {
-		String sql = "";
+	public ArrayList<TravelDo> searchTravelList(String orderValue, String order, String searchCon, String searchKey) {
+		orderValue = orderValue.substring(5);
+		String sql = "SELECT * FROM travel ";
+		Object[] args = {};
 		
-		if (searchCon.equals("title")) {
-			sql = "SELECT * FROM travel WHERE title=? ORDER BY seq DESC;";
+		if (!searchKey.isEmpty()) {
+			sql += "WHERE " + searchCon + "=? ";
+			args = new Object[1];
+			args[0] = searchKey;
 		}
-		else if (searchCon.equals("content")) {
-			sql = "SELECT * FROM travel WHERE content=? ORDER BY seq DESC;";
-		}
-		Object[] args = {searchKey};
+		sql += "ORDER BY " + orderValue + " " + order;
+		System.out.println(sql);
+		
 		return (ArrayList<TravelDo>)jdbcTemplate.query(sql, args, new TravelRowMapper());
 	}
 }

@@ -31,8 +31,22 @@
 		<table class="table table-striped">
 			<thead>
 			<tr>
-				<td colspan="2">
+				<td>
 					<a href="insertTravel.do">새로운 글 추가</a>
+				</td>
+				<td>
+					<select class="form-select" name="orderValue">
+						<option value="orderSeq">번호</option>
+						<option value="orderTitle">제목</option>
+						<option value="orderWriter">작성자</option>
+						<option value="orderRegDate">작성일</option>
+					</select>
+				</td>
+				<td>
+					<select class="form-select" name="order">
+						<option value="asc">오름차순</option>
+						<option value="desc">내림차순</option>
+					</select>
 				</td>
 				<td>
 					<select class="form-select" name="searchCon">
@@ -46,21 +60,21 @@
 				</td>
 			</tr>
 			<tr height="40">
-				<td width="50" align="center">번호</td>
-				<td width="400" align="center">제목</td>
-				<td width="100" align="center">작성자</td>
-				<td width="150" align="center">작성일</td>
+				<td align="center">번호</td>
+				<td align="center" colspan="2">제목</td>
+				<td align="center">작성자</td>
+				<td align="center">작성일</td>
 			</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${tList}" var="travel">
 				<tr height="40">
-					<td width="50" align="center">${travel.seq}</td>
-					<td width="400" align="center"> 
+					<td align="center">${travel.seq}</td>
+					<td align="center" colspan="2"> 
 						<a href="getTravel.do?seq=${travel.seq}">${travel.title}</a>
 					</td>
-					<td width="100" align="center"> ${travel.writer} </td>
-					<td width="150" align="center"> ${travel.regdate} </td>
+					<td align="center"> ${travel.writer} </td>
+					<td align="center"> ${travel.regdate} </td>
 				</tr>
 			</c:forEach>
 			</tbody>
